@@ -35,43 +35,32 @@ int main() {
     if (!(cin >> n >> x)) return 0;
 
     int *arr = new int[n];
-    bool *used = new bool[n]; 
     
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
-        used[i] = false; 
     }
 
     bubbleSort(arr, n);
 
-    int jumlahPasangan = 0;
+    int totalPasangan = 0;
 
     for (int i = 0; i < n - 1; i++) {
-        if (used[i]) {
-            continue;
-        }
-
         int angkaDicari = x - arr[i];
 
         int indeksKetemu = binarySearchFirst(arr, i + 1, n - 1, angkaDicari);
 
         if (indeksKetemu != -1) {
-            while (indeksKetemu < n && arr[indeksKetemu] == angkaDicari) {
-                if (!used[indeksKetemu]) {
-                    used[i] = true; 
-                    used[indeksKetemu] = true; 
-                    jumlahPasangan++;
-                    break; 
-                }
-                indeksKetemu++;
+            int j = indeksKetemu;
+            while (j < n && arr[j] == angkaDicari) {
+                totalPasangan++;
+                j++;
             }
         }
     }
 
-    cout << jumlahPasangan << endl;
+    cout << totalPasangan << endl;
 
     delete[] arr;
-    delete[] used;
 
     return 0;
 }
