@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib> 
+#include <ctime>   
 
 using namespace std;
 
@@ -32,13 +34,21 @@ int binarySearchFirst(int arr[], int kiri, int kanan, int target) {
 
 int main() {
     int n, x;
+    
     if (!(cin >> n >> x)) return 0;
 
     int *arr = new int[n];
     
+    srand(time(0));
+    
     for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+        arr[i] = rand() % 31; 
+        cout << arr[i];
+        if (i < n - 1) {
+            cout << " "; 
+        }
     }
+    cout << endl; 
 
     bubbleSort(arr, n);
 
