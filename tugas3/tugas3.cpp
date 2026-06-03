@@ -42,7 +42,7 @@ int main() {
     srand(time(0));
     
     for (int i = 0; i < n; i++) {
-        arr[i] = rand() % 31; 
+        arr[i] = rand() % 26; 
         cout << arr[i];
         if (i < n - 1) {
             cout << " "; 
